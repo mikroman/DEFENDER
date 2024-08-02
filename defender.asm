@@ -2,6 +2,7 @@
 
 	.byte $09,$80,$09,$80,$C3,$C2,$CD,$38
 	.byte $30
+
 COLD_START:	
 	lda #$00
 	sta $D016                          // Control Register 2
@@ -1996,6 +1997,7 @@ L_BRS_8BFB_8BF7:
 	cmp #$0B
 	bcc L_BRS_8C0D_8C01
 	jmp L_JMP_8C1B_8C03
+
 	cmp #$08
 	bcs L_BRS_8C0D_8C08
 	jmp L_JMP_8C1B_8C0A
@@ -8046,7 +8048,7 @@ L_BRS_AF16_AF0D:
 L_BRS_AF21_AF18:
 
 	rts
-	
+
 	.byte $85,$AD,$97,$AD,$AA,$AD,$B3,$AD
 	.byte $C2,$AD,$D1,$AD,$E0,$AD,$EE,$AD
 	.byte $FC,$AD,$05,$AE,$10,$AE,$2A,$AE
