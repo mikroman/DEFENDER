@@ -1,14 +1,16 @@
 * = $8000 "DEFENDER8000"
 
-	.byte $09,$80,$09,$80,$C3,$C2,$CD,$38
-	.byte $30
+	.word COLD_START		
+	.word WARM_START
+	.byte $C3,$C2,$CD,$38,$30	// - crt_signature .text "CBM80"
 
 COLD_START:	
+WARM_START:
 	lda #$00
-	sta $D016                          // Control Register 2
-	jsr $FF84                         // Init I/O Devices, Ports & Timers
-	jsr $FF87                         // Init Ram & Buffers
-	jsr $FF8A                         // Restore Vectors
+	sta $D016			// Control Register 2
+	jsr $FF84			// Init I/O Devices, Ports & Timers
+	jsr $FF87			// Init Ram & Buffers
+	jsr $FF8A			// Restore Vectors
 	jsr $FF81
 	cli
 	sei
