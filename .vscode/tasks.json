@@ -1,0 +1,68 @@
+{
+    "version": "2.0.0",
+    "command": "cmd",
+    "echoCommand": true,
+    "type": "shell",
+    "args": [
+        "/C"
+    ],
+    "tasks": [
+        {
+            "label": "Assemble",
+            "type": "shell",
+            "windows": {
+                "command": "java -cp C:\\C64\\tools\\kickassembler\\KickAss.jar kickass.KickAssembler ${fileBasenameNoExtension}.asm -o bin\\${fileBasenameNoExtension}.bin -debugdump -symbolfile -bytedump -binfile"
+            }
+        },
+        {
+            "label": "Compare to original bin",
+            "type": "shell",
+            "windows": {
+                "command": "fc /b ${fileDirname}\\bin\\_original_defender.bin ${fileDirname}\\bin\\${fileBasenameNoExtension}.bin"
+            },
+            "dependsOn": [
+                "Assemble"
+            ]
+        },
+        {
+            "label": "make CRT",
+            "type": "shell",
+            "windows": {
+                "command": "\"C:\\C64\\tools\\GTK3VICE-3.7-win64\\bin\\cartconv.exe\" -t normal -v -i ${fileDirname}\\bin\\${fileBasenameNoExtension}.bin -o ${fileDirname}\\bin\\${fileBasenameNoExtension}.crt"
+            },
+            "dependsOn": [
+                "Assemble"
+            ]
+        },
+        {
+            "label": "C64debugger Build & Launch",
+            "type": "shell",
+            "windows": {
+                "command": "\"C:\\Users\\Mike\\Desktop\\C64Debug\\C64Debugger-v0.64.58.6\\C64Debugger.exe\" -cartcrt ${fileDirname}\\bin\\${fileBasenameNoExtension}.crt -debuginfo ${fileDirname}\\bin\\${fileBasenameNoExtension}.dbg -jmp $fce2 -layout 11"
+            },
+            "dependsOn": [
+                "make CRT"
+            ],
+            "problemMatcher": [],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            }
+        },
+        {
+            "label": "VICE Build & Launch",
+            "type": "shell",
+            "windows": {
+                "command": "\"C:\\C64\\tools\\GTK3VICE-3.7-win64\\bin\\x64sc.exe\" -cartcrt ${fileDirname}\\bin\\${fileBasenameNoExtension}.crt"
+            },
+            "dependsOn": [
+                "make CRT"
+            ],
+            "problemMatcher": [],
+            "group": {
+                "kind": "build",
+                "isDefault": false
+            }
+        }
+    ]
+}
