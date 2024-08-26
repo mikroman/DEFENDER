@@ -1,3 +1,4 @@
+// 0400 07ff (sprites)
 * = $8000 "DEFENDER8000"
 
 	.word COLD_START		
@@ -27,35 +28,47 @@ L_BRS_8020_8023:
 	sta $D011                          // Control Register 1
 	sta $DC0E                          // Control Register A
 	sta $D021                          // Background Color 0
+
 	lda #$1B
 	sta $0318
 	lda #$80
 	sta $0319
+
 	lda #$E2
 	sta $D018                          // Memory Control Register
+
 	lda #$18
 	sta $D016                          // Control Register 2
+
 	lda #$00
 	sta $22
 	lda #$10
 	sta $23
+
 	ldx #$10
 	lda #$00
-	jsr L_JSR_8D14_8053
+	jsr L_JSR_8D14_8053	// fill 1000-1fff 00
+
 	lda #$00
 	sta $22
 	lda #$0E
 	sta $23
+
 	ldx #$02
 	lda #$00
-	jsr L_JSR_8D14_8062
+
+	jsr L_JSR_8D14_8062	// fill 0e00-0fff 00
+
 	lda #$00
 	sta $22
 	lda #$38
 	sta $23
+
 	ldx #$02
 	lda #$00
-	jsr L_JSR_8D14_8071
+
+	jsr L_JSR_8D14_8071	// fill 3800-39ff 00
+
 	lda #$00
 	sta $22
 	lda #$28
@@ -64,8 +77,10 @@ L_BRS_8020_8023:
 	sta $27
 	lda #$BB
 	sta $28
+
 	ldx #$09
-	jsr L_JSR_8D6D_8086
+	jsr L_JSR_8D6D_8086	// fill 2800 with 09 pages from bb8e
+
 	lda #$00
 	sta $22
 	lda #$30
@@ -74,8 +89,10 @@ L_BRS_8020_8023:
 	sta $27
 	lda #$BD
 	sta $28
+	
 	ldx #$C9
-	jsr L_JSR_8D6D_809B
+	jsr L_JSR_8D6D_809B	// fill 3000 with 1 page from bd1a
+
 	lda #$00
 	sta $22
 	lda #$31
@@ -84,8 +101,10 @@ L_BRS_8020_8023:
 	sta $27
 	lda #$BD
 	sta $28
+
 	ldx #$BC
-	jsr L_JSR_8D6D_80B0
+	jsr L_JSR_8D6D_80B0	// fill 3100 with 1 page from bd51
+
 	lda #$00
 	sta $22
 	lda #$32
@@ -94,8 +113,10 @@ L_BRS_8020_8023:
 	sta $27
 	lda #$BD
 	sta $28
+
 	ldx #$99
-	jsr L_JSR_8D6D_80C5
+	jsr L_JSR_8D6D_80C5	// fill 3200 from bd95
+
 	lda #$00
 	sta $22
 	lda #$33
@@ -104,8 +125,10 @@ L_BRS_8020_8023:
 	sta $27
 	lda #$BD
 	sta $28
+
 	ldx #$78
-	jsr L_JSR_8D6D_80DA
+	jsr L_JSR_8D6D_80DA	// fill 3300-33ff from bdfc
+
 	lda #$00
 	sta $22
 	lda #$34
@@ -114,8 +137,10 @@ L_BRS_8020_8023:
 	sta $27
 	lda #$BE
 	sta $28
+
 	ldx #$58
-	jsr L_JSR_8D6D_80EF
+	jsr L_JSR_8D6D_80EF	// fill 3400-34ff from be84
+
 	lda #$00
 	sta $22
 	lda #$35
@@ -124,8 +149,10 @@ L_BRS_8020_8023:
 	sta $27
 	lda #$BF
 	sta $28
+
 	ldx #$44
-	jsr L_JSR_8D6D_8104
+	jsr L_JSR_8D6D_8104	// fill 3500-35ff from bf2c
+
 	lda #$00
 	sta $22
 	lda #$0B
@@ -134,8 +161,10 @@ L_BRS_8020_8023:
 	sta $27
 	lda #$B6
 	sta $28
+
 	ldx #$01
-	jsr L_JSR_8D21_8119
+	jsr L_JSR_8D21_8119	// fill 0b00-0bff from b605
+
 	lda #$DE
 	sta $27
 	lda #$B9
@@ -144,22 +173,28 @@ L_BRS_8020_8023:
 	sta $22
 	lda #$08
 	sta $23
+
 	ldx #$01
-	jsr L_JSR_8D21_812E
+	jsr L_JSR_8D21_812E	// fill 0800-08ff from b9de
+
 	lda #$E0
 	sta $22
 	lda #$08
 	sta $23
+	
 	ldx #$02
 	lda #$00
-	jsr L_JSR_8D14_813D
+	jsr L_JSR_8D14_813D	// fill 08e0-09ff 00
+
 	lda #$00
 	sta $22
 	lda #$04
 	sta $23
+
 	ldx #$04
 	lda #$00
-	jsr L_JSR_8D14_814C
+	jsr L_JSR_8D14_814C	// fill 0400-07ff 00
+
 	lda #$BE
 	sta $27
 	lda #$BA
@@ -168,8 +203,10 @@ L_BRS_8020_8023:
 	sta $22
 	lda #$09
 	sta $23
+
 	ldx #$01
-	jsr L_JSR_8D21_8161
+	jsr L_JSR_8D21_8161	// fill 09f0-0aef from babe
+
 	lda #$9A
 	sta $27
 	lda #$B8
@@ -178,8 +215,10 @@ L_BRS_8020_8023:
 	sta $22
 	lda #$04
 	sta $23
+
 	ldx #$2A
-	jsr L_JSR_8D6D_8176
+	jsr L_JSR_8D6D_8176	// fill from 0480-0684 from b89a
+
 	lda #$6A
 	sta $27
 	lda #$B9
@@ -188,13 +227,16 @@ L_BRS_8020_8023:
 	sta $22
 	lda #$06
 	sta $23
+	
 	ldx #$8C
-	jsr L_JSR_8D6D_818B
+	jsr L_JSR_8D6D_818B	// fill 0680-07ff from b96a-b9dd
+
 	lda #$00
 	sta $68
 	lda #$C1
 	sta $69
 	jsr L_JSR_89B9_8196
+
 	jsr L_JSR_89A1_8199
 	jsr L_JSR_89A1_819C
 	jsr L_JSR_89B9_819F
@@ -206,9 +248,11 @@ L_BRS_8020_8023:
 	jsr L_JSR_89B9_81B1
 	jsr L_JSR_89A1_81B4
 	jsr L_JSR_89A1_81B7
+
 	lda #$1B
 	sta $D011                          // Control Register 1
 	jsr L_JSR_8FA9_81BF
+
 	ldx #$00
 	lda #$00
 	sta $64
@@ -333,8 +377,10 @@ L_JMP_825D_A231:
 	sta $22
 	lda #$D8
 	sta $23
+
 	ldx #$DE
 	jsr L_JSR_8D6D_8270
+
 	lda #$24
 	sta $27
 	lda #$B8
@@ -343,24 +389,30 @@ L_JMP_825D_A231:
 	sta $22
 	lda #$38
 	sta $23
+
 	ldx #$8A
 	jsr L_JSR_8D6D_8285
+	
 	sta $25
 	sta $26
 	lda #$00
 	sta $22
 	lda #$50
 	sta $23
+
 	ldx #$02
 	lda #$00
 	jsr L_JSR_8D14_8298
+
 	lda #$00
 	sta $22
 	lda #$C0
 	sta $23
+
 	ldx #$01
 	lda #$00
 	jsr L_JSR_8D14_82A7
+
 	lda #$00
 	sta $C9
 	sta $CA
@@ -409,6 +461,7 @@ L_BRS_82FA_82FE:
 	dex
 	bne L_BRS_82FA_82FE
 	sta $389D
+
 	lda #$78
 	sta $27
 	lda #$B5
@@ -417,8 +470,10 @@ L_BRS_82FA_82FE:
 	sta $22
 	lda #$D8
 	sta $23
+
 	ldx #$F4
 	jsr L_JSR_8D6D_8315
+
 	lda #$84
 	sta $27
 	lda #$B5
@@ -427,8 +482,10 @@ L_BRS_82FA_82FE:
 	sta $22
 	lda #$38
 	sta $23
+
 	ldx #$B4
 	jsr L_JSR_8D6D_832A
+	
 	lda #$01
 	sta $DAE2
 	lda #$FE
@@ -2000,6 +2057,8 @@ L_BRS_8BFB_8BF7:
 	bcc L_BRS_8C0D_8C01
 	jmp L_JMP_8C1B_8C03
 
+unknown_8C06:
+
 	cmp #$08
 	bcs L_BRS_8C0D_8C08
 	jmp L_JMP_8C1B_8C0A
@@ -2270,7 +2329,7 @@ L_JMP_8D23_8D31:
 	beq L_BRS_8D34_8D2B
 	inc $28
 	inc $23
-	jmp L_JMP_8D23_8D31
+	jmp L_JMP_8D23_8D31	// maaybe use BNE here instead?
 
 L_BRS_8D34_8D2B:
 
@@ -2377,10 +2436,10 @@ L_BRS_8D86_8DA1:
 
 	rts
 
-L_BRS_8D87_8D75:
+L_BRS_8D87_8D75:	// negative A> 
 
 	stx $73
-	and #$7F
+	and #$7F	// drop neg bit
 	tax
 	iny
 	lda ($27),Y
@@ -2401,7 +2460,7 @@ L_BRS_8D99_8D95:
 	ldx $73
 	inx
 	beq L_BRS_8D86_8DA1
-	jmp L_JMP_8D81_8DA3
+	jmp L_JMP_8D81_8DA3		// could be BNE instead
 
 L_JSR_8DA6_87CF:
 
@@ -2789,8 +2848,9 @@ L_JSR_8FA9_81BF:
 	sta $22
 	lda #$0C
 	sta $23
+
 	ldx #$27
-	jsr L_JSR_8D6D_8FBB
+	jsr L_JSR_8D6D_8FBB	// 90cf - 0c00-0d17
 	lda #$30
 	sta $27
 	lda #$90
@@ -2799,8 +2859,10 @@ L_JSR_8FA9_81BF:
 	sta $22
 	lda #$38
 	sta $23
+
 	ldx #$61
-	jsr L_JSR_8D6D_8FD0
+	jsr L_JSR_8D6D_8FD0	// 9030-90ce 3800-03be7
+	
 	lda #$1E
 	sta $27
 	lda #$90
@@ -2809,8 +2871,10 @@ L_JSR_8FA9_81BF:
 	sta $22
 	lda #$D8
 	sta $23
+
 	ldx #$EE
-	jsr L_JSR_8D6D_8FE5
+	jsr L_JSR_8D6D_8FE5	// 901e-902 d800-dbe7
+
 	lda #$07
 	sta $D022                          // Background Color 1, Multi-Color Register 0
 	lda #$02
@@ -2823,11 +2887,11 @@ L_JSR_8FA9_81BF:
 
 L_BRS_8FFD_9010:
 L_BRS_8FFD_9016:
-
+// Wait loop
 	txa
 	sta $D022                          // Background Color 1, Multi-Color Register 0
 	lda $DC01                          // Data Port B (Keyboard, Joystick, Paddles)
-	cmp #$EF
+	cmp #$EF			// bit 4 set
 	beq L_BRS_9018_9006
 	lda #$CC
 	jsr L_JSR_9F07_900A
@@ -3148,7 +3212,13 @@ L_BRS_92DA_92E7:
 	lda #$FF
 	sta $4300,X
 	rts
+
+unknown_92EF:
+
 	jmp L_JMP_9492_92EF
+
+unknown_92F2:
+
 	jmp L_JMP_954B_92F2
 
 L_JMP_92F5_94B1:
@@ -3471,6 +3541,9 @@ L_BRS_94D0_94FD:
 	lda #$01
 	sta $D019                          // Interrupt Request Register (IRR)
 	jmp L_JMP_954B_94E2
+
+IRQ_94E5:
+
 	cld
 	lda $DC0D                          // Interrupt (IRQ) Control Register
 	lda $D019                          // Interrupt Request Register (IRR)
@@ -5162,7 +5235,7 @@ L_JSR_9F07_A048:
 L_JSR_9F07_A209:
 L_JSR_9F07_A37B:
 L_JSR_9F07_A928:
-
+// delay_loop_25_26:
 	sta $26
 
 L_BRS_9F09_9F11:
@@ -6413,6 +6486,9 @@ L_BRS_A5C7_A5C4:
 	pla
 	pla
 	jmp L_JMP_A5B1_A5C9
+
+unknown_A5CC:
+
 	jmp L_JMP_A5B1_A5CC
 
 L_JSR_A5CF_A50A:
@@ -7756,6 +7832,9 @@ L_JSR_AD82_ACF2:
 L_JSR_AD82_AD71:
 
 	jmp ($00E6)
+
+unknown_AD85:
+
 	lda $D41C                          // Envelope Generator 3 Output
 	ldx #$02
 

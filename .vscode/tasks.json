@@ -35,10 +35,10 @@
             ]
         },
         {
-            "label": "C64debugger Build & Launch",
+            "label": "RETROdebugger Build & Launch",
             "type": "shell",
             "windows": {
-                "command": "\"C:\\Users\\Mike\\Desktop\\C64Debug\\C64Debugger-v0.64.58.6\\C64Debugger.exe\" -cartcrt ${fileDirname}\\bin\\${fileBasenameNoExtension}.crt -debuginfo ${fileDirname}\\bin\\${fileBasenameNoExtension}.dbg -jmp $fce2 -layout 11"
+                "command": "\"C:\\c64\\tools\\RetroDebugger v0.64.68\\RetroDebugger.exe\" -cartcrt ${fileDirname}\\bin\\${fileBasenameNoExtension}.crt -jmp $fce2"
             },
             "dependsOn": [
                 "make CRT"
